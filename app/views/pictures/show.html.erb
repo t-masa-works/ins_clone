@@ -1,0 +1,11 @@
+<% notice %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @picture.image.url %>
+</p>
+
+<p><%= @picture.content %>
+
+<%= link_to '編集', edit_picture_path(@picture) %> |
+<%= link_to '一覧へ戻る', pictures_path %>
