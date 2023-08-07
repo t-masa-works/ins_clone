@@ -1,10 +1,11 @@
 <h1>一覧画面</h1>
 
 <p><%= link_to '新しい画像を投稿する', new_picture_path %></p>
-<% @pictures.each.with_index(1) do |picture,index| %>
+<p><%= link_to '自分の画像一覧へ', user_path(current_user) %></p>
 
-<%= index %>
-<%= image_tag picture.image.url %>
-<p><%= picture.content %></p>
-<p><%= link_to '削除する', picture, method: :delete %></p>
+<% @pictures.each.with_index(1) do |picture,index| %>
+  <%= index %>
+  <%= link_to (image_tag picture.image.url), picture %>
+  <p><%= picture.content %></p>
+  <p><%= link_to '削除する', picture, method: :delete %></p>
 <% end %>

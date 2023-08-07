@@ -8,7 +8,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
 
     if @picture.save
       redirect_to picture_path(@picture), notice: "保存に成功しました"
@@ -22,11 +22,13 @@ class PicturesController < ApplicationController
   end
 
   def update
+    set_picture
     @picture.update(picture_params)
   end
 
   def show
     set_picture
+    @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
 
   def destroy
