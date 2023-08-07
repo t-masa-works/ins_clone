@@ -1,11 +1,17 @@
 <h1>一覧画面</h1>
 
+<% notice %>
+
 <p><%= link_to '新しい画像を投稿する', new_picture_path %></p>
 <p><%= link_to '自分の画像一覧へ', user_path(current_user) %></p>
 
-<% @pictures.each.with_index(1) do |picture,index| %>
-  <%= index %>
-  <%= link_to (image_tag picture.image.url), picture %>
+<% @pictures.each do |picture| %>
+  <% if picture.image.present? %>
+    <%= link_to (image_tag picture.image.url.to_s.encode(Encoding::UTF_8)), picture %>
+  <% else %>
+    <%= image_tag 'No.jpg' %>
+  <% end %>
   <p><%= picture.content %></p>
-  <p><%= link_to '削除する', picture, method: :delete %></p>
+  <p><%= link_to '編集する', edit_picture_path(picture) %></p>
+  <p><%= link_to '削除する', picture, method: :delete, data: { confirm: "#この画像を削除してもいいですか？" } %></p>
 <% end %>

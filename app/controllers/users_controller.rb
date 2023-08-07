@@ -12,13 +12,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    set_user
+  end
+
+  def update
+    set_user
+    render :edit if @user.invalid?
+    if @user.update(user_params)
+      redirect_to user_path(@user.id), notice:'保存に成功しました'
+    else
+      render :edit
+    end
+  end
+
   def show
-    @user = User.find(params[:id])
+    set_user
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
   end
 end

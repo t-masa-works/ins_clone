@@ -2,7 +2,20 @@
 
 <% notice %>
 
+<%= form_with(model:@user, local: true) do |form| %>
+<div class="field">
+    <%= form.label :MyImage %>
+    <% if @user.image.present? %>
+    <%= image_tag @user.image.url %>
+    <% else %>
+    <%= image_tag 'No.jpg' %>
+    <% end %>
+  </div>
+<% end %>
+
+
 <p>メールアドレス：<%= @user.email %></p>
 
+<%= link_to 'プロフィール画像を編集する', edit_user_path %>
 <%= link_to 'みんなの写真投稿一覧', pictures_path %>
 <%= link_to 'お気に入り画像一覧', favorite_path %>
