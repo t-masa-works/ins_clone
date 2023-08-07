@@ -1,11 +1,11 @@
 <% notice %></p>
-
+<h3>投稿者：<%= @picture.user.name %>
 <p>
   <strong>Image:</strong>
   <%= image_tag @picture.image.url %>
 </p>
 
-<p><%= @picture.content %>
+<p><%= @picture.content %></p>
 
 <% unless @picture.user_id == current_user.id %>
   <% if @favorite.present? %>
