@@ -15,5 +15,9 @@
   <% end %>
 <% end %>
 
-<%= link_to '編集', edit_picture_path(@picture) %> |
-<%= link_to '一覧へ戻る', pictures_path %>
+<% if @picture.user == current_user %>
+  <button type="button" class="btn btn-info"><%= link_to '画像を編集する', edit_picture_path(@picture) %></button>
+  <button type="button" class="btn btn-danger"><%= link_to '削除する', @picture, method: :delete, data: { confirm: "この画像を削除してもいいですか？" } %></button>
+<% end %>
+
+<%= link_to '一覧へ戻る', pictures_path, class:"btn btn-primary" %>

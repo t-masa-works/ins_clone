@@ -1,6 +1,12 @@
-<h1>お気に入り画像一覧</h1>
+<h1 class="shadow-lg p-3 mb-5 bg-white rounded">お気に入り画像一覧</h1>
 
-<% @favorite.each_with_index do |picture, index| %>
-<%= index + 1 %>
-<%= link_to (image_tag picture.image.url, size: '250x250'), picture %>
-<% end %>
+<%=image_tag 'heart.png', size: '600x400' %>
+
+<div class="row">
+  <% @favorite.each.with_index(1) do |picture, index| %>
+    <div class="col-md-4">
+      <%= index %>
+      <%= link_to (image_tag picture.image.url, size: '250x250'), picture %>
+    </div>
+  <% end %>
+</div>

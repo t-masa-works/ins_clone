@@ -36,7 +36,7 @@ class PicturesController < ApplicationController
   def destroy
     set_picture
     @picture.destroy
-    redirect_to pictures_path
+    redirect_to pictures_path, notice: "画像の削除に成功しました"
   end
 
   private

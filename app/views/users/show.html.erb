@@ -1,4 +1,4 @@
-<h1><%= @user.name %>のページ</h1>
+<h1 class="shadow-lg p-3 mb-5 bg-white rounded"><%= @user.name %>のページ</h1>
 
 <% notice %>
 
@@ -13,10 +13,24 @@
   </div>
 <% end %>
 
-
 <p>メールアドレス：<%= @user.email %></p>
 
-<%= link_to 'プロフィール画像を編集する', edit_user_path %>
-<%= link_to 'みんなの写真投稿一覧', pictures_path %>
-<%= link_to 'お気に入り画像一覧', favorite_path %>
-<%= link_to '新しく投稿する', new_picture_path %>
+<%= link_to 'プロフィール画像を編集する', edit_user_path, class: "btn btn-info" %>
+<%= link_to 'みんなの写真投稿一覧', pictures_path, class: "btn btn-primary" %>
+<%= link_to 'お気に入り画像一覧', favorite_path, class: "btn btn-warning" %>
+<%= link_to '新しく投稿する', new_picture_path, class: "btn btn-info" %>
+
+  <h2>自分の投稿した画像</h2>
+
+<table>
+  <tr>
+  <% @user.pictures.each do |picture| %>
+    <td><p><%= image_tag picture.image.url, :size =>'250x250' %></p></td>
+    <td><button type="button" class="btn btn-info"><%= link_to '画像を編集する', edit_picture_path(picture) %></button></td>
+    <td><button type="button" class="btn btn-danger"><%= link_to '削除する', picture, method: :delete, data: { confirm:"この画像を削除してもよろしいですか？"}%></button></td>
+  </tr>
+  <tr>
+    <td>コメント：<%= picture.content %></td>
+  </tr>
+<% end %>
+</table>

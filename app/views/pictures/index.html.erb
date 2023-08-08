@@ -1,17 +1,15 @@
-<h1>一覧画面</h1>
+<h1 class="shadow-lg p-3 mb-5 bg-white rounded">みんなの投稿画像</h1>
 
 <% notice %>
 
-<p><%= link_to '新しい画像を投稿する', new_picture_path %></p>
-<p><%= link_to '自分の画像一覧へ', user_path(current_user) %></p>
+<div class="col-12">
+  <p class="btn btn-success"><%= link_to '新しい画像を投稿する', new_picture_path %></p>
+</div>
 
-<% @pictures.each do |picture| %>
-  <% if picture.image.present? %>
-    <%= link_to (image_tag picture.image.url.to_s.encode(Encoding::UTF_8)), picture %>
-  <% else %>
-    <%= image_tag 'No.jpg' %>
-  <% end %>
-  <p><%= picture.content %></p>
-  <p><%= link_to '編集する', edit_picture_path(picture) %></p>
-  <p><%= link_to '削除する', picture, method: :delete, data: { confirm: "#この画像を削除してもいいですか？" } %></p>
+<div class="row">
+  <% @pictures.each do |picture| %>
+<div class="col-mb-4">
+  <%= link_to (image_tag picture.image.url.to_s.encode(Encoding::UTF_8), size: '250x250'), picture %>
+</div>
 <% end %>
+</div>
