@@ -25,6 +25,7 @@ class PicturesController < ApplicationController
   def update
     set_picture
     @picture.update(picture_params)
+    render :edit
   end
 
   def show
