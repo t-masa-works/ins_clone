@@ -9,9 +9,8 @@ class PicturesController < ApplicationController
 
   def create
     @picture = current_user.pictures.build(picture_params)
-    email = current_user.email
     if @picture.save
-      PictMailer.contact_mail(email).deliver
+      PictMailer.contact_mail(@picture).deliver
       redirect_to picture_path(@picture), notice: "保存に成功しました"
     else
       render :new
