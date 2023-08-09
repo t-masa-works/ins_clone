@@ -40,6 +40,11 @@
             <p class="btn btn-info"><%= link_to '自分の画像一覧へ', user_path(current_user) %></p>
             <p class="btn btn-warning"><%= link_to 'お気に入り画像一覧へ', favorite_path(current_user.favorites) %></p>
           <% end %>
+          <% if logged_in? %>
+              <h2 class="text-center"><%= current_user.name %></h2>
+          <% else %>
+            <h3 class="text-center">ようこそ</h3>
+          <% end %>
         </div>
       </div>
       <div class="col text-center">

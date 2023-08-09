@@ -1,4 +1,7 @@
 class PicturesController < ApplicationController
+  skip_before_action :login_required, only: [:new, :create]
+  skip_before_action :login_owner, only: [:edit]
+  
   def index
     @pictures = Picture.all
   end

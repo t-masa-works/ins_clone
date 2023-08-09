@@ -11,6 +11,8 @@
     </div>
 <% end %>
 
+<h3><%= @user.name %>のプロフィール</h3>
+
 <%= form_with(model:@user, local: true) do |form| %>
 <div class="field">
     <%= form.label :MyImage %>
@@ -19,10 +21,12 @@
     <% else %>
       <%= image_tag 'No.jpg' %>
     <% end %>
+    <% if @user == current_user%>
     <p><%= form.file_field :image, required: true %></p>
   </div>
 <div class="actions">
     <%= form.submit %>
   </div>
+  <% end %>
 <% end %>
 <%= link_to '戻る', user_path, class: "btn-primary" %>
