@@ -15,9 +15,9 @@
 <div class="field">
     <%= form.label :MyImage %>
     <% if @user.image.present? %>
-    <%= image_tag @user.image.url %>
+      <%= image_tag @user.image.url %>
     <% else %>
-    <%= image_tag 'No.jpg' %>
+      <%= image_tag 'No.jpg' %>
     <% end %>
     <p><%= form.file_field :image, required: true %></p>
   </div>

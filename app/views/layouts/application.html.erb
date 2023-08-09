@@ -31,18 +31,18 @@
               <p class="btn btn-secondary"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></p>
               <p><%= link_to 'みんなの写真投稿一覧', pictures_path, class: "btn btn-primary"%></p>
             <% end %>
-          <% else %>
+            <% else %>
               <p class="btn btn-success"><%= link_to "サインアップ", new_user_path %></p>
               <p class="btn btn-info"><%= link_to "ログイン", new_session_path %></p>
           <% end %>
           <% if logged_in?%>
-          <p class="btn btn-success"><%= link_to '新しい画像を投稿する', new_picture_path %></p>
-          <p class="btn btn-info"><%= link_to '自分の画像一覧へ', user_path(current_user) %></p>
-          <p class="btn btn-warning"><%= link_to 'お気に入り画像一覧へ', favorite_path(current_user.favorites) %></p>
+            <p class="btn btn-success"><%= link_to '新しい画像を投稿する', new_picture_path %></p>
+            <p class="btn btn-info"><%= link_to '自分の画像一覧へ', user_path(current_user) %></p>
+            <p class="btn btn-warning"><%= link_to 'お気に入り画像一覧へ', favorite_path(current_user.favorites) %></p>
           <% end %>
         </div>
       </div>
-      <div class="col text-center ">
+      <div class="col text-center">
         <%= yield %>
       </div>
     </div>
