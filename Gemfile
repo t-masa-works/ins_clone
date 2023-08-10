@@ -33,6 +33,8 @@ group :development do
   gem 'spring'
   gem 'letter_opener_web'
   gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
